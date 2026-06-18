@@ -2,130 +2,202 @@
 
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
 
-html {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  min-height: 100%;
+}
+
+body {
+  display: grid;
+  place-items: center;
   min-height: 100vh;
-  background: #c9ced3;
+  background: radial-gradient(
+    circle at top,
+    #7b8cff 0%,
+    #3949ab 45%,
+    #121a38 100%
+  );
+  color: #111827;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.player-shell {
+  width: min(100%, 420px);
+  padding: 20px;
+}
+
+.player-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 32px;
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.22);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+.art-frame {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #5e5ce6 0%, #4cc0ff 100%);
+}
+
+.art-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.art-frame:hover img {
+  transform: scale(1.05);
+}
+
+.track-meta {
+  padding: 24px 24px 0;
+  text-align: center;
+}
+
+.track-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+  line-height: 1.05;
+}
+
+p {
+  margin: 10px 0 0;
+  color: #546187;
+  font-size: 1rem;
+}
+
+.progress-group {
+  padding: 22px 24px 0;
+}
+
+.progress-container {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, 0.14);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.progress-track {
+  position: absolute;
+  inset: 0;
+  background: rgba(100, 116, 139, 0.14);
+}
+
+.progress-bar {
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #5e5ce6, #3b82f6);
+  border-radius: 999px;
+  transition: width 0.12s ease;
+}
+
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'League Spartan', sans-serif;
-  font-size: 12px;
+  gap: 18px;
+  padding: 24px;
 }
 
-.player-container {
-  height: 500px;
-  width: 400px;
-  background: #e7e7e7;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.3);
-}
-
-.img-container {
-  height: 300px;
-  width: 300px;
-  position: relative;
-  top: -50px;
-  left: 50px;
-}
-
-.img-container img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
-}
-
-h2 {
-  font-size: 25px;
-  text-align: center;
-  margin: 0;
-}
-
-h3 {
-  font-size: 20px;
-  text-align: center;
-  font-weight: 400;
-  margin: 5px 0 0;
-}
-
-/* Progress */
-.progress-container {
-  background: #fff;
-  border-radius: 5px;
+.control-btn {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: #f8fbff;
+  color: #334155;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
   cursor: pointer;
-  margin: 40px 20px;
-  height: 4px;
-  width: 90%;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.progress {
-  background: #242323;
-  border-radius: 5px;
-  height: 100%;
-  /* change this to show progress */
-  width: 66%;
-  transition: width 0.1s linear;
+.control-btn:hover {
+  transform: translateY(-2px);
+  background: #eff6ff;
 }
 
-.duration-wrapper {
-  position: relative;
-  top: -25px;
+.control-btn.primary {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #5e5ce6, #3b82f6);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.32);
+}
+
+.control-btn.primary:hover {
+  transform: translateY(-3px);
+}
+
+.footer-panel {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px 24px;
+  color: #475569;
+  font-size: 0.95rem;
 }
 
-/* Controls */
-.player-controls {
-  position: relative;
-  top: -15px;
-  left: 120px;
-  width: 200px;
+.footer-panel span:last-child {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.fas {
-  font-size: 30px;
-  color: rgb(129, 129, 129);
-  margin-right: 30px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.fas:hover {
-  filter: brightness(80%);
-}
-
-.main-button {
-  font-size: 40px;
-  position: relative;
-  top: 3px;
-}
-
-/* Media Query: iPhone (Vertical) */
-@media screen and (max-width: 376px) {
-  .player-container {
-    width: 95vw;
+@media screen and (max-width: 420px) {
+  .player-card {
+    border-radius: 28px;
   }
 
-  .img-container {
-    left: 29px;
+  .control-btn {
+    width: 50px;
+    height: 50px;
   }
 
-  h2 {
-    font-size: 20px;
-  }
-
-  h3 {
-    font-size: 15px;
-  }
-
-  .player-controls {
-    top: -10px;
-    left: 100px;
+  .control-btn.primary {
+    width: 64px;
+    height: 64px;
   }
 }

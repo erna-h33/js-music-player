@@ -12,31 +12,73 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="player-container">
-      <!-- Song -->
-      <div class="img-container">
-        <img src="img/jacinto-1.jpg" alt="Album Art" />
-      </div>
-      <h2 id="title">Electric Chill Machine</h2>
-      <h3 id="artist">Jacinto</h3>
-      <audio src="music/jacinto-1.mp3"></audio>
-
-      <!-- Progress -->
-      <div class="progress-container" id="progress-container">
-        <div class="progress" id="progress"></div>
-        <div class="duration-wrapper">
-          <span id="current-time">0:00</span>
-          <span id="duration">2:06</span>
+    <main class="player-shell">
+      <section class="player-card" aria-label="Music player">
+        <div class="art-frame">
+          <img
+            id="cover"
+            src="img/jacinto-1.jpg"
+            alt="Album art for Electric Chill Machine"
+          />
         </div>
-      </div>
-      <!-- Controls -->
-      <div class="player-controls">
-        <i class="fas fa-backward" id="prev" title="Previous"></i>
-        <i class="fas fa-play" id="play" title="Play"></i>
-        <i class="fas fa-forward" id="next" title="Next"></i>
-      </div>
-    </div>
-    <!-- Script -->
+
+        <div class="track-meta">
+          <span class="track-tag">Now playing</span>
+          <h1 id="title">Electric Chill Machine</h1>
+          <p id="artist">Jacinto Design</p>
+        </div>
+
+        <audio id="audio" src="music/jacinto-1.mp3"></audio>
+
+        <div class="progress-group">
+          <div
+            class="progress-container"
+            id="progress-container"
+            aria-label="Track progress"
+          >
+            <div class="progress-track"></div>
+            <div class="progress-bar" id="progress"></div>
+          </div>
+          <div class="time-labels">
+            <span id="current-time">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button
+            class="control-btn"
+            id="prev"
+            type="button"
+            aria-label="Previous track"
+          >
+            <i class="fas fa-backward"></i>
+          </button>
+          <button
+            class="control-btn primary"
+            id="play"
+            type="button"
+            aria-label="Play"
+          >
+            <i class="fas fa-play"></i>
+          </button>
+          <button
+            class="control-btn"
+            id="next"
+            type="button"
+            aria-label="Next track"
+          >
+            <i class="fas fa-forward"></i>
+          </button>
+        </div>
+
+        <div class="footer-panel">
+          <span id="track-count">1 / 4</span>
+          <span id="track-title">Electric Chill Machine</span>
+        </div>
+      </section>
+    </main>
+
     <script src="script.js"></script>
   </body>
 </html>
